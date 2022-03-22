@@ -2,20 +2,16 @@
 import 'package:flutter/material.dart';
 
 class DropdownKonversi extends StatelessWidget {
-  var listItem;
-
-  var dropdownOnChanged;
-
-  DropdownKonversi({
+  const DropdownKonversi({
     Key? key,
     required this.newValue,
-    required this.dropdown,
     required this.listItem,
     required this.dropdownOnChanged,
   }) : super(key: key);
 
-  String newValue;
-  final VoidCallback dropdown;
+  final String newValue;
+  final List<String> listItem;
+  final Function dropdownOnChanged;
 
   @override
   Widget build(BuildContext context) {
@@ -27,7 +23,9 @@ class DropdownKonversi extends StatelessWidget {
         );
       }).toList(),
       value: newValue,
-      onChanged: dropdownOnChanged,
+      onChanged: (value) {
+        dropdownOnChanged(value);
+      },
       isExpanded: true,
     );
   }

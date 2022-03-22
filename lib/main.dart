@@ -75,22 +75,26 @@ class _MyAppState extends State<MyApp> {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Input(etInput: etInput),
-              DropdownButton<String>(
-                items: listItem.map((String value) {
-                  return DropdownMenuItem<String>(
-                    value: value,
-                    child: Text(value),
-                  );
-                }).toList(),
-                value: _newValue,
-                onChanged: (changeValue) {
-                  setState(() {
-                    _newValue = changeValue!;
-                  });
-                  konvertHandler();
-                },
-                isExpanded: true,
-              ),
+              // DropdownButton<String>(
+              //   items: listItem.map((String value) {
+              //     return DropdownMenuItem<String>(
+              //       value: value,
+              //       child: Text(value),
+              //     );
+              //   }).toList(),
+              //   value: _newValue,
+              //   onChanged: (changeValue) {
+              //     setState(() {
+              //       _newValue = changeValue!;
+              //     });
+              //     konvertHandler();
+              //   },
+              //   isExpanded: true,
+              // ),
+              DropdownKonversi(
+                  newValue: _newValue,
+                  listItem: listItem,
+                  dropdownOnChanged: dropdownOnChanged),
               Result(
                 result: _result,
                 title: _newValue,
@@ -117,5 +121,6 @@ class _MyAppState extends State<MyApp> {
     setState(() {
       _newValue = changeValue;
     });
+    konvertHandler();
   }
 }
